@@ -87,6 +87,28 @@ export const sql: Technology = {
 };
 
 // Frameworks and Tools
+export const vue: Technology = {
+  name: 'Vue',
+  type: TechnologyType.frameworksAndTools,
+  image: './assets/images/technologies/vue.png',
+  color: '#dd0031',
+  description:
+    'An open-source frontend JavaScript framework for building user interfaces and single-page applications',
+  url: 'https://vuejs.org/',
+  isSelected: false,
+};
+
+export const nuxt: Technology = {
+  name: 'Nuxt',
+  type: TechnologyType.frameworksAndTools,
+  image: './assets/images/technologies/nuxt.png',
+  color: '#dd0031',
+  description:
+    'A free and open-source framework with an intuitive and extendable way to create type-safe, performant and production-grade web applications with Vue.js.',
+  url: 'https://nuxt.com/',
+  isSelected: false,
+};
+
 export const angular: Technology = {
   name: 'Angular',
   type: TechnologyType.frameworksAndTools,
@@ -106,6 +128,17 @@ export const bootstrap: Technology = {
   description:
     'Bootstrap is a free and open-source front-end framework for designing websites and web applications.',
   url: 'https://getbootstrap.com/',
+  isSelected: false,
+};
+
+export const tailwind: Technology = {
+  name: 'Tailwind CSS',
+  type: TechnologyType.frameworksAndTools,
+  image: './assets/images/technologies/tailwind.png',
+  color: '#563d7c',
+  description:
+    'An open-source framework used to style your website in HTML without external CSS.',
+  url: 'https://tailwindcss.com/',
   isSelected: false,
 };
 
@@ -192,6 +225,17 @@ export const npm: Technology = {
   isSelected: false,
 };
 
+export const pnpm: Technology = {
+  name: 'PNPM',
+  type: TechnologyType.frameworksAndTools,
+  image: './assets/images/technologies/pnpm.png',
+  color: '#CB3837',
+  description:
+    'A package manager for JavaScript projects, offering a faster and more disk-efficient way to manage dependencies.',
+  url: 'https://www.pmpm.io/',
+  isSelected: false,
+};
+
 export const nuget: Technology = {
   name: 'NuGet',
   type: TechnologyType.frameworksAndTools,
@@ -203,6 +247,16 @@ export const nuget: Technology = {
 };
 
 // Cloud and DevOps
+export const aws: Technology = {
+  name: 'AWS',
+  type: TechnologyType.CloudDevOps,
+  image: './assets/images/technologies/aws.svg',
+  color: '#0072C6',
+  description: 'AWS is a cloud computing platform provided by Amazon.',
+  url: 'https://aws.amazon.com/',
+  isSelected: false,
+};
+
 export const azure: Technology = {
   name: 'Azure',
   type: TechnologyType.CloudDevOps,
@@ -210,6 +264,17 @@ export const azure: Technology = {
   color: '#0072C6',
   description: 'Azure is a cloud computing platform provided by Microsoft.',
   url: 'https://azure.microsoft.com/',
+  isSelected: false,
+};
+
+export const terraform: Technology = {
+  name: 'Terraform',
+  type: TechnologyType.CloudDevOps,
+  image: './assets/images/technologies/terraform.png',
+  color: '#0072C6',
+  description:
+    'An open-source tool that allows users to define infrastructure as code, enabling the provisioning and management of cloud and on-premises resources.',
+  url: 'https://developer.hashicorp.com/terraform/intro',
   isSelected: false,
 };
 
@@ -295,6 +360,16 @@ export const postman: Technology = {
   isSelected: false,
 };
 
+export const bruno: Technology = {
+  name: 'Bruno',
+  type: TechnologyType.other,
+  image: './assets/images/technologies/bruno.png',
+  color: '#FF6C37',
+  description: 'Bruno is a platform for API development.',
+  url: 'https://www.usebruno.com/',
+  isSelected: false,
+};
+
 export const bitbucket: Technology = {
   name: 'Bitbucket',
   type: TechnologyType.other,
@@ -302,6 +377,17 @@ export const bitbucket: Technology = {
   color: '#0052CC',
   description: 'Bitbucket is a Git hosting platform.',
   url: 'https://bitbucket.org/',
+  isSelected: false,
+};
+
+export const gitlab: Technology = {
+  name: 'GitLab',
+  type: TechnologyType.other,
+  image: './assets/images/technologies/gitlab.png',
+  color: '#0052CC',
+  description:
+    'An Open Source code repository and collaborative software development platform for large DevOps and DevSecOps projects.',
+  url: 'https://gitlab.com/',
   isSelected: false,
 };
 
@@ -412,16 +498,22 @@ export const frameworksAndTools: Technology[] = [
   git,
   springBoot,
   maven,
+  vue,
+  nuxt,
   angular,
   npm,
+  pnpm,
   nuget,
+  tailwind,
   bootstrap,
   primeNg,
   dotNetCore,
 ];
 
 export const cloudDevOps: Technology[] = [
+  aws,
   azure,
+  terraform,
   kubernetes,
   docker,
   jenkins,
@@ -436,8 +528,10 @@ export const otherTechnologies: Technology[] = [
   eclipse,
   figma,
   postman,
+  bruno,
   swagger,
   bitbucket,
+  gitlab,
   dynatrace,
   elasticSearch,
   jira,
@@ -455,14 +549,20 @@ export const allTechnologies: Technology[] = [
   css,
   angular,
   bootstrap,
+  vue,
+  nuxt,
+  tailwind,
   primeNg,
   git,
   springBoot,
   dotNetCore,
   maven,
   npm,
+  pnpm,
   nuget,
+  aws,
   azure,
+  terraform,
   kubernetes,
   docker,
   spinnaker,
@@ -474,8 +574,10 @@ export const allTechnologies: Technology[] = [
   eclipse,
   figma,
   postman,
+  bruno,
   swagger,
   bitbucket,
+  gitlab,
   dynatrace,
   elasticSearch,
   jira,
