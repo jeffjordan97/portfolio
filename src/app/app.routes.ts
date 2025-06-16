@@ -1,55 +1,41 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HeroComponent } from './features/hero/hero.component';
+import { AboutComponent } from './features/about/about.component';
+import { SkillsComponent } from './features/skills/skills.component';
+import { ExperienceComponent } from './features/experience/experience.component';
+import { ProjectsComponent } from './features/projects/projects.component';
+import { TestimonialsComponent } from './features/testimonials/testimonials.component';
+import { ContactComponent } from './features/contact/contact.component';
 
 export const routes: Routes = [
   {
     path: 'hero',
-    loadComponent: () =>
-      import('../app/features/hero/hero.component').then(
-        (m) => m.HeroComponent
-      ),
+    component: HeroComponent,
   },
   {
     path: 'about',
-    loadComponent: () =>
-      import('../app/features/about/about.component').then(
-        (m) => m.AboutComponent
-      ),
+    component: AboutComponent,
   },
   {
     path: 'skills',
-    loadComponent: () =>
-      import('../app/features/skills/skills.component').then(
-        (m) => m.SkillsComponent
-      ),
+    component: SkillsComponent,
   },
   {
     path: 'experience',
-    loadComponent: () =>
-      import('../app/features/experience/experience.component').then(
-        (m) => m.ExperienceComponent
-      ),
+    component: ExperienceComponent,
   },
   {
     path: 'work',
-    loadComponent: () =>
-      import('../app/features/projects/projects.component').then(
-        (m) => m.ProjectsComponent
-      ),
+    component: ProjectsComponent,
   },
   {
     path: 'reviews',
-    loadComponent: () =>
-      import('../app/features/testimonials/testimonials.component').then(
-        (m) => m.TestimonialsComponent
-      ),
+    component: TestimonialsComponent,
   },
   {
     path: 'contact',
-    loadComponent: () =>
-      import('../app/features/contact/contact.component').then(
-        (m) => m.ContactComponent
-      ),
+    component: ContactComponent,
   },
 ];
 

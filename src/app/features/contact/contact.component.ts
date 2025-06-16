@@ -13,6 +13,7 @@ import {
 import { MailService } from '../../core/services/mail.service';
 import { CommonModule } from '@angular/common';
 import { environment } from '../../../environments/environment';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-contact',
@@ -21,19 +22,32 @@ import { environment } from '../../../environments/environment';
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
 })
-export class ContactComponent {
+export class ContactComponent implements OnInit {
   socialMediaLinks: SocialMediaLinks = socialMediaLinks;
 
   contactForm!: FormGroup;
   formSubmitted: boolean = false;
   formSendError: boolean = false;
 
-  constructor(private fb: FormBuilder, private mailService: MailService) {
+  constructor(
+    private fb: FormBuilder,
+    private mailService: MailService,
+    private seo: SeoService
+  ) {
     // Initialize the form group with validation rules
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       message: ['', Validators.required],
+    });
+  }
+
+  ngOnInit(): void {
+    this.seo.updateMetaData({
+      title: 'Jeffrey Jordan Software Engineer',
+      description: 'Jeffrey Jordan Software Engineer, North West, UK',
+      image:
+        'https://raw.githubusercontent.com/jeffjordan97/portfolio/refs/heads/master/src/assets/images/profile-img.PNG',
     });
   }
 

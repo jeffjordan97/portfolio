@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavigationComponent } from './core/navigation/navigation.component';
 import { HeroComponent } from './features/hero/hero.component';
@@ -10,6 +10,7 @@ import { ContactComponent } from './features/contact/contact.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { CallToActionCvComponent } from './features/call-to-action-cv/call-to-action-cv.component';
 import { TestimonialsComponent } from './features/testimonials/testimonials.component';
+import { SeoService } from './services/seo.service';
 
 @Component({
   selector: 'app-root',
@@ -30,6 +31,17 @@ import { TestimonialsComponent } from './features/testimonials/testimonials.comp
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Portfolio';
+
+  constructor(private seo: SeoService) {}
+
+  ngOnInit() {
+    this.seo.updateMetaData({
+      title: 'Jeffrey Jordan Software Engineer',
+      description: 'Jeffrey Jordan Software Engineer, North West, UK',
+      image:
+        'https://raw.githubusercontent.com/jeffjordan97/portfolio/refs/heads/master/src/assets/images/profile-img.PNG',
+    });
+  }
 }

@@ -8,12 +8,12 @@ import {
 import { heroContent, HeroContent } from './types/hero-content';
 import { Subject } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { SocialMediaLinksComponent } from './social-media-links/social-media-links.component';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule, SocialMediaLinksComponent],
+  imports: [CommonModule],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss',
 })
@@ -32,10 +32,16 @@ export class HeroComponent implements OnInit, OnDestroy {
   currentText: string = '';
   loopTimeout: any;
 
-  constructor() {}
+  constructor(private seo: SeoService) {}
 
   ngOnInit() {
     // this.startAnimation();
+    this.seo.updateMetaData({
+      title: 'Jeffrey Jordan Software Engineer',
+      description: 'Jeffrey Jordan Software Engineer, North West, UK',
+      image:
+        'https://raw.githubusercontent.com/jeffjordan97/portfolio/refs/heads/master/src/assets/images/profile-img.PNG',
+    });
   }
 
   startAnimation(): void {

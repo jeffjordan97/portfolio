@@ -2,6 +2,9 @@ import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { Role, roles } from './types/roles';
 import { CommonModule } from '@angular/common';
 import { CardModule } from 'primeng/card';
+import { SeoService } from '../../services/seo.service';
+import { PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-experience',
@@ -12,13 +15,20 @@ import { CardModule } from 'primeng/card';
 })
 export class ExperienceComponent implements OnInit {
   roles: Role[] = roles;
+  private isBrowser = false;
 
   items!: HTMLElement[];
   timelineHeight!: number;
   defaultLine!: HTMLElement | null;
   drawLine!: HTMLElement | null;
 
-  constructor(private elementRef: ElementRef) {}
+  constructor(
+    private elementRef: ElementRef,
+    private seo: SeoService,
+    @Inject(PLATFORM_ID) platformId: Object
+  ) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
 
   ngOnInit(): void {
     this.items = Array.from(
@@ -31,9 +41,16 @@ export class ExperienceComponent implements OnInit {
       this.elementRef.nativeElement.querySelector('.default-line');
     this.drawLine = this.elementRef.nativeElement.querySelector('.draw-line');
 
-    if (this.drawLine) {
+    if (this.drawLine && this.isBrowser) {
       this.onScroll(); // Initial call for scroll positioning
     }
+
+    this.seo.updateMetaData({
+      title: 'Jeffrey Jordan Software Engineer',
+      description: 'Jeffrey Jordan Software Engineer, North West, UK',
+      image:
+        'https://raw.githubusercontent.com/jeffjordan97/portfolio/refs/heads/master/src/assets/images/profile-img.PNG',
+    });
   }
 
   // Listen to window scroll event

@@ -7,6 +7,8 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { navigationItems } from './types/navigation-item';
+import { PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-navigation',
@@ -18,14 +20,22 @@ import { navigationItems } from './types/navigation-item';
 })
 export class NavigationComponent implements OnInit {
   @ViewChild('menuBtn') menuBtn!: ElementRef<HTMLInputElement>; // Menu button element reference
+  private isBrowser = false;
 
   isDarkTheme = true; // Variable to track the current theme
   navigationItems = navigationItems;
 
-  constructor(private elementRef: ElementRef) {}
+  constructor(
+    private elementRef: ElementRef,
+    @Inject(PLATFORM_ID) platformId: Object
+  ) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
 
   ngOnInit(): void {
-    this.applyStoredTheme();
+    if (this.isBrowser) {
+      this.applyStoredTheme();
+    }
   }
 
   // Apply stored theme from localStorage or match system preferences

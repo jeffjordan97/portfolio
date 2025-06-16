@@ -3,10 +3,15 @@ import {
   Component,
   ElementRef,
   HostListener,
+  OnInit,
 } from '@angular/core';
 import { Project, projects } from './types/project';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { SeoService } from '../../services/seo.service';
+import { PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+
 @Component({
   selector: 'app-projects',
   standalone: true,
@@ -14,10 +19,26 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',
 })
-export class ProjectsComponent implements AfterViewInit {
+export class ProjectsComponent implements OnInit, AfterViewInit {
   projects: Project[] = projects;
+  private isBrowser = false;
 
-  constructor(private elementRef: ElementRef) {}
+  constructor(
+    private elementRef: ElementRef,
+    private seo: SeoService,
+    @Inject(PLATFORM_ID) platformId: Object
+  ) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
+
+  ngOnInit(): void {
+    this.seo.updateMetaData({
+      title: 'Jeffrey Jordan Software Engineer',
+      description: 'Jeffrey Jordan Software Engineer, North West, UK',
+      image:
+        'https://raw.githubusercontent.com/jeffjordan97/portfolio/refs/heads/master/src/assets/images/profile-img.PNG',
+    });
+  }
 
   projectCards!: HTMLElement[];
 
@@ -33,7 +54,7 @@ export class ProjectsComponent implements AfterViewInit {
     this.projectCards.forEach((project: HTMLElement) => {
       const projectTop = project.getBoundingClientRect().top;
 
-      if (window.innerHeight * 0.8 > projectTop) {
+      if (this.isBrowser && window.innerHeight * 0.8 > projectTop) {
         project.classList.add('slideUpFadeIn');
       }
     });
